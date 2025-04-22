@@ -30,7 +30,7 @@ Go to your Slack channel and type the following to invite the app: /invite @name
 This is required to avoid the **channel not found** error when sending messages.
 
 ## Step 8
-Open your `messagebot2.py` file, and:
+Open `messagebot.py` file, and:
 - Paste your Slack token in the `token` variable.
 - Paste the request URL in the `url` variable.
 - Paste the **channel ID** in the `channel` variable.
