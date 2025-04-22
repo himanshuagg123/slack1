@@ -1,17 +1,40 @@
-HOW TO SEND MESSAGE ON SLACK WITH THE HELP OF PYTHON SCRIPT :
+How to Send a Message on Slack Using a Python Script
+Step 1: Create a Slack account. Visit: https://slack.com/intl/en-in
 
- step 1 : create an slack account visit: https://slack.com/intl/en-in
- step 2 : create a workspace and then create a channel(channel are of two types public and private)
- step 3 : Go to api.slack.com, click on Your Apps, and create a new app.
- step 4: Enter the name of the app and choose your workspace.
- step 5: Go to OAuth & Permissions, then scroll down to Scopes. Add the required permissions (chat:write) under Bot Token Scopes.
-         A token will be generated for authentication. Add this token to your workspace. This all is for public channel.
- step 6: To send a message to private channel u need to do one more step in  OAuth & Permissions. Add groups:read permission because
-         to app doest know yout channel is private or public it is the function groups:read permission to identify private channel in the workspace.
-         To avoid error channel channel not u have follow these steps
- step 7: go to your channel and type /invite @name_of_the_app to avoid the error channel not found.
- step 8 : now go to 
-          
- 
+Step 2: Create a workspace, and then create a channel (channels can be either public or private).
 
-  
+Step 3: Go to api.slack.com, click on Your Apps, and create a new app.
+
+Step 4: Enter the name of your app and select your workspace.
+
+Step 5:
+
+Navigate to OAuth & Permissions.
+
+Scroll down to Scopes, and under Bot Token Scopes, add the required permission: chat:write.
+
+A token will be generated for authentication. Add this token to your workspace.
+
+These steps are sufficient if you're sending messages to a public channel.
+
+Step 6:
+To send a message to a private channel, you need to perform one additional step:
+
+Under OAuth & Permissions, add the groups:read permission.
+
+This allows the app to identify whether a channel is private or public. Without this permission, you may encounter the "channel not found" error.
+
+Step 7:
+Go to your Slack channel and type /invite @name_of_your_app to invite the app to the channel.
+This step is required to avoid the "channel not found" error when sending messages.
+
+Step 8:
+Now open your messagebot2.py file, and:
+
+Paste your Slack token in the token variable.
+
+Paste the URL in the url variable.
+
+Paste the channel ID in the channel variable.
+
+After completing all these steps, congratulations — your message will be successfully sent to your Slack channel!
