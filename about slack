@@ -29,7 +29,7 @@ Go to your Slack channel and type /invite @name_of_your_app to invite the app to
 This step is required to avoid the "channel not found" error when sending messages.
 
 Step 8:
-Now open your messagebot2.py file, and:
+Now open your messagebot.py file, and:
 
 Paste your Slack token in the token variable.
 
