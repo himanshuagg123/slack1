@@ -1,10 +1,10 @@
 import requests
 
-token = "" #paste token here
+token = ""  # paste token here
 
-url = "" # paste url here
+url = "" #  paste url here
 
-channel = "" #paste channel id here 
+channel = "" # paste channel id here 
 
 message = "hi annant"
 
