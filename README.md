@@ -20,8 +20,9 @@ This proactive system ensures that errors are identified and acknowledged in rea
 ## 📌 Prerequisites
 
 - A Slack account  
-- Python installed on your system  
-- Access to create Slack apps via [Slack API](https://api.slack.com)  
+- Python installed  
+- Docker installed  
+- Access to create Slack apps via [Slack API](https://api.slack.com)
 
 ---
 
@@ -54,10 +55,10 @@ Sign up at: [https://slack.com/intl/en-in](https://slack.com/intl/en-in)
 1. Go to **OAuth & Permissions**.
 2. Scroll to **Scopes**.
 3. Under **Bot Token Scopes**, add:
-   - `chat:write` (for sending messages)
+   - `chat:write`
 
-If you're sending messages to a **private** channel, also add:
-   - `groups:read` (to read channel metadata)
+   For **private** channels, also add:
+   - `groups:read`
 
 4. Install the app to your workspace to generate a **Bot User OAuth Token**.
 
@@ -65,38 +66,55 @@ If you're sending messages to a **private** channel, also add:
 
 ### ✅ Step 5: Invite App to Channel
 
-- Go to your Slack channel.
-- Run the command:  
+In the Slack channel, run:
+
+
 /invite @your_app_name
+✅ Step 6: Update messagebot.py
+Update this file:
 
 
-
-This ensures the bot has access to the channel.
-
----
-
-### ✅ Step 6: Update Python Script
-
-In your `messagebot.py` file:
-
-```python
 token = "your-slack-bot-token"
 url = "https://slack.com/api/chat.postMessage"
 channel = "your-channel-id"
-Replace your-slack-bot-token with the token from Step 4.
+🐳 Using Docker
+✅ Step 7: Create a Dockerfile
+Dockerfile
+Copy
+Edit
+# Dockerfile
+FROM python:3.10-slim
 
-Replace your-channel-id with the actual channel ID.
-You can find it by opening the Slack channel and checking the URL.
+WORKDIR /app
 
-✅ Sample Python Code
-Here’s a simple Python example:
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
 
+COPY messagebot.py .
+
+CMD ["python", "messagebot.py"]
+✅ Step 8: Create requirements.txt
+
+requests
+✅ Step 9: Build and Run with Docker
+Build the Docker image:
+
+
+docker build -t slack-bot .
+Run the container:
+
+
+docker run slack-bot
+You should see the output in your terminal and the message appear in Slack.
+
+✅ Sample Python Code (Recap)
+python
 
 import requests
 
 token = "xoxb-your-token-here"
 url = "https://slack.com/api/chat.postMessage"
-channel = "CXXXXXXXX"  # replace with actual channel ID
+channel = "CXXXXXXXX"
 
 headers = {
     "Authorization": f"Bearer {token}",
@@ -110,15 +128,11 @@ data = {
 
 response = requests.post(url, headers=headers, json=data)
 print(response.json())
-🏁 Final Note
-Once you've completed the above steps, run your script:
-
-
-python messagebot.py
-Your message will appear in the selected Slack channel! 🎉
-
 📚 Resources
 Slack API Docs
 
 Slack Python SDK
 
+Docker Official Docs
+
+Built with ❤️ to make our team's workflow smoother and faster ⚡
